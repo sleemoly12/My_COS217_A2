@@ -28,16 +28,16 @@ char* Str_copy(char pcDst[], const char pcSrc[])
 /* concatenate src array and dst array */
 char* Str_concat(char pcDst[], const char pcSrc[])
 {
-   int i = 0;
-   int j = 0;
+   size_t i = 0;
+   size_t j = 0;
    assert(pcSrc != NULL);
    assert(pcDst != NULL);
-   while (pcSrc[i] != '\0') {
-      pcDst[i] = pcSrc[i];
+   while (pcDst[i] != '\0') {
       i++;
    }
    while (pcDst[j] != '\0') {
-      pcDst[i] = pcDst[j];
+      pcDst[i] = pcSrc[j];
+      i++;
       j++;
    }
    pcDst[i+j] = '\0';
