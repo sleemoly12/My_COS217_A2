@@ -1,3 +1,6 @@
+#include "str.h"
+#include <assert.h>
+
 /* get length of src array */
 size_t Str_getLength(const char pcSrc[])
 {
@@ -31,11 +34,11 @@ char* Str_concat(char pcDst[], const char pcSrc[])
    assert(pcDst != NULL);
    while (pcSrc[i] != '\0') {
       pcDst[i] = pcSrc[i];
-      i++
+      i++;
    }
    while (pcDst[j] != '\0') {
       pcDst[i] = pcDst[j];
-      j++
+      j++;
    }
    pcDst[i+j] = '\0';
    return pcDst;
