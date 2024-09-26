@@ -9,7 +9,7 @@ size_t Str_getLength(const char pcSrc[])
 }
 
 /* copy src array to dst array */
-size_t Str_copy(const char pcSrc[], char pcDst[])
+char* Str_copy(char pcDst[], const char pcSrc[])
 {
    int i = 0;
    assert(pcSrc != NULL);
@@ -23,7 +23,7 @@ size_t Str_copy(const char pcSrc[], char pcDst[])
 }
 
 /* concatenate src array and dst array */
-size_t Str_concat(char pcSrc[], char pcDst[])
+char* Str_concat(char pcDst[], const char pcSrc[])
 {
    int i = 0;
    int j = 0;
@@ -39,4 +39,31 @@ size_t Str_concat(char pcSrc[], char pcDst[])
    }
    pcDst[i+j] = '\0';
    return pcDst;
+}
+
+/* compare src array and dst array, return the int differences in letters */
+int Str_compare(const char pc1[], const char pc2[])
+{
+   return 0;
+   /*
+   int i = 0;
+   assert(pc1 != NULL);
+   assert(pc2 != NULL);
+   while (pc1[i] != '\0') {
+      if pc1[i] = pc2[i]{
+
+      }
+      else if pc1[i] < pc2[i] {
+
+      }
+      else if pc1[]
+     
+   }
+   */
+}
+
+char* Str_search(const char haystack[], const char needle[]) 
+{
+
+return NULL;
 }
