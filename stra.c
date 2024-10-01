@@ -1,7 +1,8 @@
 #include "str.h"
 #include <assert.h>
 
-/* get length of src array */
+/* Return the length of the string pointer pcSrc, the argument. */
+/* only have to do it once for both programs!*/
 size_t Str_getLength(const char pcSrc[])
 {
    size_t uLength = 0;
@@ -11,7 +12,8 @@ size_t Str_getLength(const char pcSrc[])
    return uLength;
 }
 
-/* copy src array to dst array */
+/* Return the modified destination array pcDst, which is a 
+copy of the source array pcSrc. */
 char* Str_copy(char pcDst[], const char pcSrc[])
 {
    int i = 0;
@@ -70,7 +72,7 @@ If needle is an empty string, return value is always haystack.*/
 
 char* Str_search(const char haystack[], const char needle[]) 
 {
-   size_t rememberMe = NULL;
+   char* rememberMe = NULL;
    size_t h = 0;
    size_t n = 0;
    assert(haystack != NULL);
@@ -82,22 +84,25 @@ char* Str_search(const char haystack[], const char needle[])
    }
    while (haystack[h] != '\0') {
       if (haystack[h] == needle[n]){
-         if (rememberMe == NULL){
-            rememberMe = h;
+         if (n == 0){
+            rememberMe = &haystack[h];
          }
          h++;
          n++;
+         if (needle[n] == '\0') {
+            return rememberMe;
+         }
       }
       else if (haystack[h] != needle[n]){
-         n == 0;
-         rememberMe == NULL;
-         h++;
-      }
-      else if (haystack[h] == '\0') {
-         return NULL;
-      }
-      else if (needle[n] == '\0') {
-         return rememberMe;
+         if (n > 0) {
+            h = h - n + 1;
+         }
+         else {
+            h++;
+         }
+         n = 0;
       }
    }
+   /* If haystack reaches \0: */
+   return NULL;
 }
