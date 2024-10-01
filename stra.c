@@ -1,3 +1,6 @@
+/* Array implementations of functions Str_getLength, Str_copy, 
+Str_concat, Str_compare, and Str_search.*/
+
 #include "str.h"
 #include <assert.h>
 
