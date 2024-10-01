@@ -54,6 +54,7 @@ int Str_compare(const char pc1[], const char pc2[])
    size_t i = 0;
    assert(pc1 != NULL);
    assert(pc2 != NULL);
+   
    while (pc1[i] != '\0' || pc2[i] != '\0') {
       if (pc1[i] < pc2[i]) {
          return -1;
