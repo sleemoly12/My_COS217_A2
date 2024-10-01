@@ -1,3 +1,6 @@
+/* Pointer implementations of functions Str_getLength, Str_copy, 
+Str_concat, Str_compare, and Str_search.*/
+
 #include "str.h"
 #include <assert.h>
 
@@ -86,8 +89,8 @@ If needle is an empty string, return value is always haystack.*/
 char* Str_search(const char *haystack, const char *needle) 
 {
    const char *rememberMe;
-   const char *h = haystack;
-   const char *n = needle;
+   const char *hPtr = haystack;
+   const char *nPtr = needle;
 
    assert(haystack != NULL);
    assert(needle != NULL);
@@ -98,25 +101,25 @@ char* Str_search(const char *haystack, const char *needle)
    }
 
 
-   while (*h != 0){
+   while (*hPtr != '\0'){
       /* If matching letter is found */
-      if (*h == *n) {
-         rememberMe = h;
-         while (*h != '\0' && *n != '\0' && *h == *n) {
-            h++;
-            n++;
+      if (*hPtr == *nPtr) {
+         rememberMe = hPtr;
+         while (*hPtr != '\0' && *nPtr != '\0' && *hPtr == *nPtr) {
+            hPtr++;
+            nPtr++;
          }
 
          /* If end of needle reached, match found */
-         if (*n == '\0') {
+         if (*nPtr == '\0') {
             return (char*)rememberMe;
          }
          /* reset n pointer to beginning of needle */
-         n = needle; 
-         h = rememberMe + 1;
+         nPtr = needle; 
+         hPtr = rememberMe + 1;
       }
       /* Increment haystack */
-      else (h++);
+      else (hPtr++);
         }
    return NULL;
    }
