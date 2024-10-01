@@ -13,17 +13,15 @@ size_t Str_getLength(const char *pcSrc)
    return (size_t)(pcEnd - pcSrc);
 }
 
-/* Return the length of the string pointer pcSrc, the argument. */
-/* only have to do it once for both programs!*/
+/* Return the modified destination array pcDst, which is a 
+copy of the source array pcSrc. */
 
-char* Str_copy(char *pcDst, const char *pcSrc[])
+char* Str_copy(char *pcDst, const char *pcSrc)
 {
-   int i = 0;
    assert(pcSrc != NULL);
    assert(pcDst != NULL);
-   while (*pcEnd != '\0') {
-      /* unfinished af */
+   char *final = pcDst;
+   while (*pcDst++ = *pcSrc++ != '\0') {
+      return final;
    }
-   pcDst[i] = '\0';
-   return pcDst;
 }
