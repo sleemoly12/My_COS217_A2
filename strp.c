@@ -22,7 +22,8 @@ char* Str_copy(char *pcDst, const char *pcSrc)
    char *final = pcDst;
    assert(pcSrc != NULL);
    assert(pcDst != NULL);
-   /* Increment through and copy contents of pcSrc to pcDst*/
+   /* Increment through and copy contents of pcSrc to pcDst. 
+   Be economical! */
    while ((*pcDst++ = *pcSrc++) != '\0') {
    }
    /* Return modified pcDst array, whose location is already
@@ -59,8 +60,8 @@ char* Str_concat(char *pcDst, const char *pcSrc)
 if pc1 is less than pc2. Returns 1 if pc1 is greater than pc2.*/
 int Str_compare(const char *pc1, const char *pc2)
 {
-   assert(*pc1 != NULL);
-   assert(*pc2 != NULL);
+   assert(pc1 != NULL); /* are you given an address that is real? */
+   assert(pc2 != NULL);
 
    while (*pc1 != '\0' || *pc2 != '\0') {
       if (*pc1 < *pc2) {
@@ -87,10 +88,9 @@ char* Str_search(const char *haystack, const char *needle)
    const char *rememberMe;
    const char *h = haystack;
    const char *n = needle;
-   const char *rememberMe;
 
-   assert(*haystack != NULL);
-   assert(*needle != NULL);
+   assert(haystack != NULL);
+   assert(needle != NULL);
 
    /* If needle is an empty string, return haystack. */
    if (*needle == '\0') {
@@ -116,7 +116,8 @@ char* Str_search(const char *haystack, const char *needle)
          h = rememberMe + 1;
       }
       /* Increment haystack */
-      else h++;
+      else (h++);
         }
-   }
    return NULL;
+   }
+   
