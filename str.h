@@ -1,9 +1,10 @@
+/* Header file for stra.c and strp.c. Includes all of
+the functions in array form, but can be read in pointer
+form. */
+
 #ifndef STR_INCLUDED
 #define STR_INCLUDED
 #include <stddef.h>
-
-/* name of the argument must be included in the comment */
-/* job, argument, return*/
 
 /* Return the length of the string pointer pcSrc, the argument. */
 /* only have to do it once for both programs!*/
