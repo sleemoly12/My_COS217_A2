@@ -72,7 +72,7 @@ If needle is an empty string, return value is always haystack.*/
 
 char* Str_search(const char haystack[], const char needle[]) 
 {
-   char* rememberMe = NULL;
+   const char* rememberMe = NULL;
    size_t h = 0;
    size_t n = 0;
    assert(haystack != NULL);
