@@ -20,6 +20,14 @@
 static size_t replaceAndWrite(const char *pcLine,
                               const char *pcFrom, const char *pcTo)
 {
+   size_t replaceCount = 0;
+   if (pcFrom = '\0') {
+      write(pcLine)
+      return 0;
+   }
+   else {
+      Str_search()
+   }
    /* Insert your code here. */
 }
 
