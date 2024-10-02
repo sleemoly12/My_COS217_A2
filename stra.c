@@ -77,34 +77,34 @@ If needle is an empty string, return value is always haystack.*/
 char* Str_search(const char haystack[], const char needle[]) 
 {
    const char* rememberMe = NULL;
-   size_t h = 0;
-   size_t n = 0;
+   size_t hPtr = 0;
+   size_t nPtr = 0;
    assert(haystack != NULL);
    assert(needle != NULL);
 
    /* If needle is an empty string, return haystack.*/
    if (needle[0] == '\0') {
-      return haystack;
+      return (char*) haystack;
    }
-   while (haystack[h] != '\0') {
-      if (haystack[h] == needle[n]){
-         if (n == 0){
-            rememberMe = &haystack[h];
+   while (haystack[hPtr] != '\0') {
+      if (haystack[hPtr] == needle[nPtr]){
+         if (nPtr == 0){
+            rememberMe = &haystack[hPtr];
          }
-         h++;
-         n++;
-         if (needle[n] == '\0') {
-            return rememberMe;
+         hPtr++;
+         nPtr++;
+         if (needle[nPtr] == '\0') {
+            return (char*)rememberMe;
          }
       }
-      else if (haystack[h] != needle[n]){
-         if (n > 0) {
-            h = h - n + 1;
+      else if (haystack[hPtr] != needle[nPtr]){
+         if (nPtr > 0) {
+            hPtr = hPtr - nPtr + 1;
          }
          else {
-            h++;
+            hPtr++;
          }
-         n = 0;
+         nPtr = 0;
       }
    }
    /* If haystack reaches \0: */
