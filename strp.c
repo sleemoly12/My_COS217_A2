@@ -63,7 +63,7 @@ char* Str_concat(char *pcDst, const char *pcSrc)
 if pc1 is less than pc2. Returns 1 if pc1 is greater than pc2.*/
 int Str_compare(const char *pc1, const char *pc2)
 {
-   assert(pc1 != NULL); /* are you given an address that is real? */
+   assert(pc1 != NULL);
    assert(pc2 != NULL);
 
    while (*pc1 != '\0' || *pc2 != '\0') {
@@ -78,9 +78,6 @@ int Str_compare(const char *pc1, const char *pc2)
    }
    return 0;
 }
-
-/* UNEDITED STARTING BELOW */
-
 
 /* Returns pointer to beginning of located substring needle,
 found in haystack, or NULL if substring is not found. 
