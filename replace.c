@@ -32,11 +32,17 @@ static size_t replaceAndWrite(const char *pcLine,
       printf("%s", pcLine);
       return 0;
    }
-/* get the length of pcFrom??? */
-fromLength = Str_getLength(*pcFrom);
+/* Get the length of pcFrom. */
+fromLength = Str_getLength(pcFrom);
 
 /* Find pcFrom in pcLine */
 location = Str_search(pcLine, pcFrom);
+
+/* Check if no replacements are there to make. */
+if (location == NULL) {
+   printf("%s", pcLine);
+   return 0;
+}
 
 /*Print until...*/
 while (*pcLine != '\0') {
@@ -49,11 +55,10 @@ while (*pcLine != '\0') {
    /* Print pcTo.*/
    printf("%s", pcTo);
    /* Jump over pcFrom. */
-   pcLine = location + fromLength; /* add fromLength here? */
+   pcLine = location + fromLength; 
    location = Str_search(pcLine, pcFrom);
    if (location == NULL) {
-      /* at this point, you know exactly what you have to print: the
-      entire rest of the line. */
+      /* Print the rest of pcLine. */
       printf("%s", pcLine);
       break;
    }
@@ -65,9 +70,11 @@ return replaceCount;
 
 /* If argc is unequal to 3, then write an error message to stderr and
    return EXIT_FAILURE.  Otherwise...
+
    If argv[1] is the empty string, then write each line of stdin to
    stdout, write a message to stderr indicating that 0 replacements
    were made, and return 0.  Otherwise...
+
    Write each line of stdin to stdout with each distinct occurrence of
    argv[1] replaced with argv[2], write a message to stderr indicating
    how many replacements were made, and return 0.
@@ -93,9 +100,12 @@ int main(int argc, char *argv[])
    pcFrom = argv[1];
    pcTo = argv[2];
 
-   while (fgets(acLine, MAX_LINE_SIZE, stdin) != NULL)
-      /* Insert your code here. */
-
+   while (fgets(acLine, MAX_LINE_SIZE, stdin) != NULL) {
+      uReplaceCount += replaceAndWrite(acLine, pcFrom, pcTo);
+      }
    fprintf(stderr, "%lu replacements\n", (unsigned long)uReplaceCount);
    return 0;
-}
+   }
+      
+  
+
