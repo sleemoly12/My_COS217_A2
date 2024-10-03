@@ -22,32 +22,42 @@ static size_t replaceAndWrite(const char *pcLine,
 {
    size_t replaceCount = 0;
    char* location;
+   size_t fromLength;
 
    assert(pcLine != NULL);
    assert(pcFrom != NULL);
    assert(pcTo != NULL);
 
    if (*pcFrom == '\0') {
-      fput(*pcLine);
+      printf("%s", pcLine);
       return 0;
    }
+/* get the length of pcFrom??? */
+fromLength = Str_getLength(*pcFrom);
+
 /* Find pcFrom in pcLine */
-location = Str_search(*pcLine, *pcFrom);
+location = Str_search(pcLine, pcFrom);
 
 /*Print until...*/
 while (*pcLine != '\0') {
    while (pcLine != location){
-      fput(*pcLine)
+      putchar(*pcLine);
       pcLine++;
-      }
+   }
    /*... you find an occurence.*/
    replaceCount++;
    /* Print pcTo.*/
-   fput(*pcTo)
+   printf("%s", pcTo);
    /* Jump over pcFrom. */
-   pcLine = location + pcFrom;
-   location = Str_search(*pcLine, *pcFrom);
-      }
+   pcLine = location + fromLength; /* add fromLength here? */
+   location = Str_search(pcLine, pcFrom);
+   if (location == NULL) {
+      /* at this point, you know exactly what you have to print: the
+      entire rest of the line. */
+      printf("%s", pcLine);
+      break;
+   }
+}
 return replaceCount;
 }
 
