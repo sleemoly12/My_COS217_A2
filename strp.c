@@ -5,7 +5,6 @@ Str_concat, Str_compare, and Str_search.*/
 #include <assert.h>
 
 /* Return the length of the string pointer pcSrc, the argument. */
-/* only have to do it once for both programs!*/
 size_t Str_getLength(const char *pcSrc)
 {
    const char *pcEnd;
@@ -53,7 +52,7 @@ char* Str_concat(char *pcDst, const char *pcSrc)
    while (*pcSrc != '\0') {
       *pcTemp++ = *pcSrc++;
    }
-   /* Add a new null terminator!!!!!! */
+   /* Add a new null terminatro. */
    *pcTemp = '\0';
    return pcDst;
 }
@@ -106,19 +105,18 @@ char* Str_search(const char *haystack, const char *needle)
             hPtr++;
             nPtr++;
          }
-
          /* If end of needle reached, match found */
          if (*nPtr == '\0') {
             return (char*)rememberMe;
          }
-         /* reset n pointer to beginning of needle. Continue
+         /* Reset n pointer to beginning of needle. Continue
          on with h pointer through the rest of the string. */
          nPtr = needle; 
          hPtr = rememberMe + 1;
-      }
+         }
       /* Increment haystack */
       else (hPtr++);
-        }
+      }
    return NULL;
    }
    
