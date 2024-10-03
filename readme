@@ -120,6 +120,30 @@ Is it possible for Str_copy or Str_concat to call assert to verify
 that the destination memory area specified by the caller is large
 enough? Explain.
 
+/* No. There are two functions that deal with sizes of arrays:
+sizeOf, and Str_getLength. If we were to run Str_copy or Str_concat
+and try to use assert and sizeOf to verify the sufficient length
+of the destination memory area, the src and dst pointer will
+carry merely 8 bytes of information, just enough memory to 'point'
+to its content (but doesn't store the content itself.) Both the
+src and dst pointer, no matter how long its content is, will 
+always just be 8 bytes — which means assert will not be able to
+verify any information about the size of the memory area itself,
+sicne no matter the size of the content, the pointer itself will
+only be 8 bytes.  
 
+Alternatively, if we were to try and use Str_getLength instead of
+sizeOf, the Str_getLength function will merely return the SIZE of
+the array itself, without considering the fact that FEWER contents
+of the array could be initialized. For example, there could be a
+destination array of the size 10,000, but dst[0] could = '\0' —
+meaning that dst[1]...dst[2]... and so on are garbage memory that
+does not impact the size of the dst memory itself. In effect, it
+is is a function that can indicate that there is enough space when
+there is not, and not enough space when there is.
 
+Hence, if both sizeOf and Str_getLength are not sufficient in getting
+accurate lengths of the destination memory area, we can then conclude
+that we CANNOT use asser tto verify destination memory length.
+*/
 ------------------------------------------------------------------------
