@@ -87,6 +87,7 @@ char* Str_search(const char haystack[], const char needle[])
       return (char*) haystack;
    }
    while (haystack[hPtr] != '\0') {
+      /* If matching letter is found */
       if (haystack[hPtr] == needle[nPtr]){
          if (nPtr == 0){
             rememberMe = &haystack[hPtr];
