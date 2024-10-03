@@ -31,18 +31,24 @@ static size_t replaceAndWrite(const char *pcLine,
       fput(*pcLine);
       return 0;
    }
-/* before i do anything, find the first occurence of 'at'*/
-
+/* Find pcFrom in pcLine */
 location = Str_search(*pcLine, *pcFrom);
-   while (*pcLine != '\0') {
-      while (pcLine != searchResult){
+
+/*Print until...*/
+while (*pcLine != '\0') {
+   while (pcLine != location){
       fput(*pcLine)
       pcLine++;
       }
-      if (pcLine )
-
-      location = Str_search(*pcLine, *pcFrom);
-}
+   /*... you find an occurence.*/
+   replaceCount++;
+   /* Print pcTo.*/
+   fput(*pcTo)
+   /* Jump over pcFrom. */
+   pcLine = location + pcFrom;
+   location = Str_search(*pcLine, *pcFrom);
+      }
+return replaceCount;
 }
 
 /*--------------------------------------------------------------------*/
