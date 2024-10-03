@@ -111,7 +111,8 @@ char* Str_search(const char *haystack, const char *needle)
          if (*nPtr == '\0') {
             return (char*)rememberMe;
          }
-         /* reset n pointer to beginning of needle */
+         /* reset n pointer to beginning of needle. Continue
+         on with h pointer through the rest of the string. */
          nPtr = needle; 
          hPtr = rememberMe + 1;
       }
