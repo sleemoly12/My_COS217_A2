@@ -98,6 +98,7 @@ char* Str_search(const char haystack[], const char needle[])
             return (char*)rememberMe;
          }
       }
+      /* If hPtr and nPtr do NOT match */
       else if (haystack[hPtr] != needle[nPtr]){
          if (nPtr > 0) {
             hPtr = hPtr - nPtr + 1;
