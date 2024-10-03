@@ -52,7 +52,7 @@ char* Str_concat(char *pcDst, const char *pcSrc)
    while (*pcSrc != '\0') {
       *pcTemp++ = *pcSrc++;
    }
-   /* Add a new null terminatro. */
+   /* Add a new null terminator. */
    *pcTemp = '\0';
    return pcDst;
 }
@@ -95,7 +95,6 @@ char* Str_search(const char *haystack, const char *needle)
    if (*needle == '\0') {
       return (char*)haystack;
    }
-
 
    while (*hPtr != '\0'){
       /* If matching letter is found */
